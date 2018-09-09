@@ -18,7 +18,7 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body p-0">
-            <div class="row p-5">
+            <div class="row p-3">
               <div class="col-md-6">
                 <img src="{{asset('images/logo.png')}}">
               </div>
@@ -42,7 +42,7 @@
                 <div class="mb-2">&nbsp;</div>
                 <div class="h2 font-weight-light">&nbsp;</div>
               </div>
-              
+
               <div class="py-3 px-5 text-right">
                 <div class="mb-2">&nbsp;</div>
                 <div class="h2 font-weight-light">&nbsp;</div>

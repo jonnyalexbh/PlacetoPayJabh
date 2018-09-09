@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-  <button type="button" class="btn btn-success btn-lg btn-block">Comprar</button>
+  <a class="btn btn-success btn-lg btn-block" href="{{ route('invoice') }}">Pagar factura</a>
 @endsection
 
 @section('js')
