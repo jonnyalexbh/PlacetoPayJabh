@@ -3,9 +3,12 @@
 namespace App\Soap;
 
 use SoapClient;
+use App\Traits\SoapHelper;
 
 class Consumer
 {
+  use SoapHelper;
+
   protected $client;
   /**
   * __construct
@@ -21,7 +24,7 @@ class Consumer
   */
   public function getBanks()
   {
-    $response = $this->client->getBankList(['auth' => $this->getAuth()])->getBankListResult;
+    $response = $this->client->getBankList(['auth' => $this->Auth()])->getBankListResult;
     return $response;
   }
   /**
@@ -32,20 +35,5 @@ class Consumer
   {
     $response = $this->client->createTransaction($transaction)->createTransactionResult;
     return $response;
-  }
-  /**
-  * getAuth
-  *
-  */
-  public function getAuth()
-  {
-    $seed = date('c');
-    $tranKey = sha1($seed.env('PSE_KEY'), false);
-
-    return [
-      'login' => env('PSE_ID'),
-      'tranKey' => $tranKey,
-      'seed' => $seed
-    ];
   }
 }

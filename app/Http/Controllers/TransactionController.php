@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Transaction;
 use App\Soap\Consumer;
+use App\Traits\SoapHelper;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+  use SoapHelper;
+
   protected $wsPlace;
 
   /**
@@ -24,7 +27,7 @@ class TransactionController extends Controller
   */
   public function store(Request $request){
     $transaction = [
-      'auth' => $this->wsPlace->getAuth(),
+      'auth' => $this->Auth(),
       'transaction' => [
         'bankCode' => $request->bankCode,
         'bankInterface' => $request->bankInterface,
