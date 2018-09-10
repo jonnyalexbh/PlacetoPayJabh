@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use SoapClient;
+use App\Transaction;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -60,7 +61,18 @@ class PaymentController extends Controller
     $client = new SoapClient(env('PSE_WSDL'));
     $response = $client->createTransaction($transaction)->createTransactionResult;
 
-    return redirect()->away($response->bankURL);
+    if ($response->returnCode == 'SUCCESS') {
+
+      Transaction::create([
+        'transactionID' => $response->transactionID,
+        'responseCode' => $response->responseCode,
+        'trazabilityCode' => $response->trazabilityCode
+      ]);
+
+      return redirect()->away($response->bankURL);
+    }
+
+    return view('payment.error', ['response' => $response]);
   }
   /**
   * getAuth
