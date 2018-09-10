@@ -14,3 +14,4 @@
 Route::view('/', 'index');
 Route::view('invoice', 'payment.index')->name('invoice');
 Route::get('pay', 'PaymentController@index')->name('pay');
+Route::post('send', 'PaymentController@initTransaction')->name('init');
