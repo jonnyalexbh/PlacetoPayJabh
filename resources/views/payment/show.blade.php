@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-  <form action="{{ route('init') }}" method="post">
+  <form action="{{ route('transaction') }}" method="post">
     @csrf
     <div class="form-group row">
       <label for="example-text-input" class="col-3 col-form-label">Tipo de cliente</label>
