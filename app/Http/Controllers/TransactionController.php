@@ -25,7 +25,8 @@ class TransactionController extends Controller
   * store
   *
   */
-  public function store(Request $request){
+  public function store(Request $request)
+  {
     $transaction = [
       'auth' => $this->Auth(),
       'transaction' => [

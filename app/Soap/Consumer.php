@@ -4,6 +4,7 @@ namespace App\Soap;
 
 use SoapClient;
 use App\Traits\SoapHelper;
+use Illuminate\Support\Facades\Cache;
 
 class Consumer
 {
@@ -19,13 +20,16 @@ class Consumer
     $this->client = new SoapClient(env('PSE_WSDL'));
   }
   /**
-  * getBanks
+  * getBanks saves in cache 24 hours
   *
   */
   public function getBanks()
   {
-    $response = $this->client->getBankList(['auth' => $this->Auth()])->getBankListResult;
-    return $response;
+    return Cache::remember('pay', $minutes='1440', function()
+    {
+      $response = $this->client->getBankList(['auth' => $this->Auth()])->getBankListResult;
+      return $response;
+    });
   }
   /**
   * createTransaction
