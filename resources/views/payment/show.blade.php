@@ -11,6 +11,16 @@
 @endsection
 
 @section('content')
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <strong>¡Ups!</strong> Corrige los siguientes errores:<br><br>
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
   <form action="{{ route('transaction') }}" method="post">
     @csrf
     <div class="form-group row">

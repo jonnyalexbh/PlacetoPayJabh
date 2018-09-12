@@ -6,6 +6,7 @@ use App\Transaction;
 use App\Soap\Consumer;
 use App\Traits\SoapHelper;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTransaction;
 
 class TransactionController extends Controller
 {
@@ -43,7 +44,7 @@ class TransactionController extends Controller
   * store
   *
   */
-  public function store(Request $request)
+  public function store(StoreTransaction $request)
   {
     $transaction = [
       'auth' => $this->Auth(),
