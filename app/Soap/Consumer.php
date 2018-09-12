@@ -40,4 +40,13 @@ class Consumer
     $response = $this->client->createTransaction($transaction)->createTransactionResult;
     return $response;
   }
+  /**
+  * transactionInformation
+  *
+  */
+  public function transactionInformation($transaction)
+  {
+    $response = $this->client->getTransactionInformation(['auth' => $this->Auth(), 'transactionID' => $transaction])->getTransactionInformationResult;
+    return $response;
+  }
 }

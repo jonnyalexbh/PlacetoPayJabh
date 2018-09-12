@@ -37,11 +37,11 @@ DB_PASSWORD=XXXX
 # Realizar las migraciones.
 php artisan migrate
 ```
-### Aplicacion en produccion
+### Aplicación en producción
 ``` bash
 # Cambie la variable APP_ENV=local por
 APP_ENV=production
-# Optimizar el tiempo de carga y respuesta de la aplicacion
+# Optimizar el tiempo de carga y respuesta de la aplicación
 php artisan config:cache
 php artisan route:cache
 ```

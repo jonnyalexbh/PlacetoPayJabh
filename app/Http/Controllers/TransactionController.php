@@ -22,6 +22,24 @@ class TransactionController extends Controller
     $this->wsPlace = $place;
   }
   /**
+  * index
+  *
+  */
+  public function index()
+  {
+    $transactions = Transaction::all();
+    return view('transactions.index', compact('transactions'));
+  }
+  /**
+  * show
+  *
+  */
+  public function show($transaction)
+  {
+    $transaction = $this->wsPlace->transactionInformation($transaction);
+    return view('transactions.show', compact('transaction'));
+  }
+  /**
   * store
   *
   */
